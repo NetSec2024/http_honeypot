@@ -1,0 +1,30 @@
+[
+    {
+        "path": "/secret",
+        "method": "GET",
+        "client_address": "127.0.0.1",
+        "client_port": 59724
+    },
+    {
+        "path": "/secret",
+        "method": "GET",
+        "client_address": "127.0.0.1",
+        "client_port": 56310,
+        "timestamp": "2024-05-22T09:27:05.304420"
+    },
+    {
+        "path": "/secret",
+        "method": "POST",
+        "client_address": "127.0.0.1",
+        "client_port": 51790,
+        "timestamp": "2024-05-22T09:27:53.434575",
+        "post_data": "param1=value1&param2=value2"
+    },
+    {
+        "path": "/secret",
+        "method": "GET",
+        "client_address": "127.0.0.1",
+        "client_port": 38516,
+        "timestamp": "2024-05-22T09:32:57.367093"
+    }
+]
