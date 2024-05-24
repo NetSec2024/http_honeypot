@@ -11,6 +11,7 @@ SECRET_PAGE_PATH = "secret"
 LOG_FILE = "server_log.json"
 MAIN_PAGE_FILE = 'index.html'
 SECRET_PAGE_FILE = 'secret.html'
+secret_pages=['/secret', '/admin','/user', '/home', '/accounts']
 
 class RequestHandler(BaseHTTPRequestHandler):
 
@@ -38,6 +39,19 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             self.wfile.write(self.read_file(SECRET_PAGE_FILE))
+
+        elif parsed_path.path in secret_pages:
+            if method == "POST":
+                content_length = int(self.headers['Content-Length'])
+                post_data = self.rfile.read(content_length)
+                self.log_action(parsed_path.path, method, post_data.decode('utf-8'))
+            else:
+                self.log_action(parsed_path.path, method)
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.wfile.write(self.read_file(SECRET_PAGE_FILE))   
+
         else:
             self.send_response(404)
             self.send_header("Content-type", "text/html")
