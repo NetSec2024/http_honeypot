@@ -9,8 +9,8 @@ HOST_NAME = 'localhost'
 PORT = 8080
 SECRET_PAGE_PATH = "secret"
 LOG_FILE = "server_log.json"
-MAIN_PAGE_FILE = 'index.html'
-SECRET_PAGE_FILE = 'secret.html'
+MAIN_PAGE_FILE = 'web_page/index.html'
+SECRET_PAGE_FILE = 'web_page/secret.html'
 secret_pages=['/secret','/user', '/home', '/accounts']
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -50,7 +50,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            self.wfile.write(self.read_file('fake_secret.html'))
+            self.wfile.write(self.read_file('web_page/fake_secret.html'))
 
         elif parsed_path.path == '/log_button_press':
             if method == "POST":
